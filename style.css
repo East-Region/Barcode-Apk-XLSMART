@@ -2,7 +2,7 @@
 header {
   width: 100%;
   background-color: #ffffff;
-  padding: 24px 0;
+  padding: 16px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@ header {
 }
 
 .main-logo {
-  max-width: 220px;
+  max-width: 200px;
   height: auto;
 }
 
@@ -27,11 +27,9 @@ html, body {
   background: linear-gradient(135deg, #004aad, #7b2ff7, #ff4ecd);
   background-size: 400% 400%;
   animation: gradientBG 12s ease infinite;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  overflow-x: hidden;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr; /* Header + konten */
 }
 
 @keyframes gradientBG {
@@ -40,17 +38,14 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-/* Layout vertikal */
+/* Layout isi layar penuh */
 .app-container {
-  flex: 1;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr); /* 3 blok sama tinggi */
   width: 100%;
-  max-width: 400px;
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
+  max-width: 100%;
+  padding: 0;
+  gap: 0;
 }
 
 /* Blok aplikasi */
@@ -58,22 +53,13 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
 }
 
-/* Link wrapper biar kotak + teks bisa diklik */
-.app-link {
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Kotak persegi fix sama semua */
+/* Kotak persegi */
 .app-card {
-  width: 280px;
-  height: 280px;
+  width: 60%;
+  aspect-ratio: 1 / 1;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
@@ -81,13 +67,13 @@ html, body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform .3s ease, box-shadow .3s ease;
+  transition: transform .2s ease, box-shadow .2s ease;
   overflow: hidden;
 }
 
 .app-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 /* Logo wrapper */
@@ -99,6 +85,7 @@ html, body {
   justify-content: center;
 }
 
+/* Logo proporsional */
 .logo-wrapper img {
   max-width: 100%;
   max-height: 100%;
@@ -107,32 +94,23 @@ html, body {
   padding: 8px;
 }
 
-/* Penyesuaian khusus untuk AXIS */
-.logo-wrapper img[alt="AXISNET"] {
-  width: 90%;
-  max-height: 70%;
-  min-height: 60px;
-}
-
-/* Penyesuaian khusus untuk Smartfren */
-.logo-wrapper img[alt="MySF"],
-.logo-wrapper img[alt="Smartfren"] {
-  width: 85%;
-  max-height: 60%;
-}
-
 /* Deskripsi */
 .desc {
   font-size: 13px;
   color: #fff;
   text-align: center;
-  margin: 0;
+  margin-top: 6px;
 }
 
 /* Responsif ekstra kecil */
 @media (max-width: 400px) {
   .main-logo {
-    max-width: 70vw;
+    max-width: 60vw;
   }
-
   .app-card {
+    width: 70%;
+  }
+  .desc {
+    font-size: 12px;
+  }
+}
