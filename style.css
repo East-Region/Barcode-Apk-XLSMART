@@ -2,18 +2,15 @@
 header {
   width: 100%;
   background-color: #ffffff;
-  padding: 16px 0;
+  padding: 12px 0; /* lebih kecil biar hemat ruang */
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 10;
 }
 
 .main-logo {
-  max-width: 200px;
+  max-width: 160px;
   height: auto;
 }
 
@@ -29,7 +26,7 @@ html, body {
   animation: gradientBG 12s ease infinite;
   overflow: hidden;
   display: grid;
-  grid-template-rows: auto 1fr; /* Header + konten */
+  grid-template-rows: auto 1fr; /* header + konten */
 }
 
 @keyframes gradientBG {
@@ -38,14 +35,12 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-/* Layout isi layar penuh */
+/* Container isi dibagi rata layar */
 .app-container {
   display: grid;
   grid-template-rows: repeat(3, 1fr); /* 3 blok sama tinggi */
+  height: 100%;
   width: 100%;
-  max-width: 100%;
-  padding: 0;
-  gap: 0;
 }
 
 /* Blok aplikasi */
@@ -58,7 +53,7 @@ html, body {
 
 /* Kotak persegi */
 .app-card {
-  width: 60%;
+  width: 55%;
   aspect-ratio: 1 / 1;
   background: #fff;
   border-radius: 16px;
@@ -85,7 +80,6 @@ html, body {
   justify-content: center;
 }
 
-/* Logo proporsional */
 .logo-wrapper img {
   max-width: 100%;
   max-height: 100%;
@@ -102,13 +96,13 @@ html, body {
   margin-top: 6px;
 }
 
-/* Responsif ekstra kecil */
-@media (max-width: 400px) {
+/* Responsif HP kecil */
+@media (max-height: 700px) {
   .main-logo {
-    max-width: 60vw;
+    max-width: 120px;
   }
   .app-card {
-    width: 70%;
+    width: 65%;
   }
   .desc {
     font-size: 12px;
