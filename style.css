@@ -61,11 +61,19 @@ html, body {
   gap: 8px;
 }
 
-/* Kotak persegi */
+/* Link wrapper biar kotak + teks bisa diklik */
+.app-link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Kotak persegi fix sama semua */
 .app-card {
-  width: 100%;
-  max-width: 300px;
-  aspect-ratio: 1 / 1;
+  width: 280px;
+  height: 280px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
@@ -73,13 +81,13 @@ html, body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition: transform .3s ease, box-shadow .3s ease;
   overflow: hidden;
 }
 
 .app-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
 }
 
 /* Logo wrapper */
@@ -91,7 +99,6 @@ html, body {
   justify-content: center;
 }
 
-/* Logo proporsional umum */
 .logo-wrapper img {
   max-width: 100%;
   max-height: 100%;
@@ -100,10 +107,18 @@ html, body {
   padding: 8px;
 }
 
-/* Penyesuaian khusus untuk logo AXIS (SVG) agar tidak terlalu kecil */
+/* Penyesuaian khusus untuk AXIS */
 .logo-wrapper img[alt="AXISNET"] {
   width: 90%;
+  max-height: 70%;
   min-height: 60px;
+}
+
+/* Penyesuaian khusus untuk Smartfren */
+.logo-wrapper img[alt="MySF"],
+.logo-wrapper img[alt="Smartfren"] {
+  width: 85%;
+  max-height: 60%;
 }
 
 /* Deskripsi */
@@ -121,10 +136,3 @@ html, body {
   }
 
   .app-card {
-    max-width: 90vw;
-  }
-
-  .desc {
-    font-size: 12px;
-  }
-}
