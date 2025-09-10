@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     card.addEventListener("click", () => {
       const app = card.getAttribute("data-app");
       const platform = detectPlatform();
-      openApp(app, platform);
+      redirectToStore(app, platform);
     });
   });
 });
@@ -19,8 +19,8 @@ function detectPlatform() {
   }
 }
 
-function openApp(app, platform) {
-  const appUrls = {
+function redirectToStore(app, platform) {
+  const links = {
     myxl: {
       android: "https://play.google.com/store/apps/details?id=com.apps.MyXL&hl=id",
       ios: "https://apps.apple.com/id/app/myxl-cek-kuota-beli-paket-xl/id683141076"
@@ -30,16 +30,4 @@ function openApp(app, platform) {
       ios: "https://apps.apple.com/id/app/axisnet/id497146073?l=id"
     },
     mysf: {
-      android: "https://play.google.com/store/apps/details?id=com.smartfren&hl=id",
-      ios: "https://apps.apple.com/id/app/mysmartfren/id1209898190"
-    }
-  };
-
-  const url = appUrls[app]?.[platform];
-
-  if (url) {
-    window.open(url, "_blank");
-  } else {
-    alert("Maaf, perangkat atau aplikasi tidak dikenali.");
-  }
-}
+      android: "https://play.google
