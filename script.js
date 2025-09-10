@@ -1,23 +1,125 @@
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".app-card").forEach(card => {
-    card.addEventListener("click", () => {
-      const app = card.getAttribute("data-app");
-      openApp(app);
-    });
-  });
-});
+header {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
 
-function openApp(app) {
-  const appUrls = {
-    myxl: "https://play.google.com/store/apps/details?id=com.apps.MyXL&hl=id",
-    axisnet: "https://play.google.com/store/apps/details?id=com.axis.net",
-    mysf: "https://play.google.com/store/apps/details?id=com.smartfren&hl=id"
-  };
+.main-logo {
+  max-width: 160px;
+  height: auto;
+}
 
-  const url = appUrls[app];
-  if (url) {
-    window.open(url, "_blank");
-  } else {
-    console.warn(`App "${app}" tidak dikenali.`);
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #004aad, #7b2ff7, #ff4ecd);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.app-container {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  height: 100%;
+  width: 100%;
+}
+
+.app-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-card {
+  width: 55%;
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+  overflow: hidden;
+  touch-action: manipulation;
+  animation: fadeIn 0.6s ease;
+}
+
+.app-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.logo-wrapper {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 8px;
+  transition: transform 0.2s ease;
+}
+
+.logo-wrapper img:hover {
+  transform: scale(1.05);
+}
+
+.logo-wrapper img[alt="AXISNET"] {
+  width: 90%;
+  min-height: 60px;
+}
+
+.desc {
+  font-size: 13px;
+  color: #fff;
+  text-align: center;
+  margin-top: 6px;
+}
+
+@media (max-height: 700px) {
+  .main-logo {
+    max-width: 120px;
+  }
+  .app-card {
+    width: 65%;
+  }
+  .desc {
+    font-size: 12px;
+  }
+}
+
+@media (orientation: landscape) {
+  .app-card {
+    width: 40%;
   }
 }
